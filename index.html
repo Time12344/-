@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取模和取余计算器</title>
+    <style>
+        body {
+            background-color: #FFFAF0; /* 乳白色 */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            width: 300px;
+            margin: 0 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 10px);
+            margin-bottom: 10px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            width: calc(33.33% - 10px);
+            height: 40px;
+            margin: 5px;
+        }
+        .flexivse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #333; /* 黑色 */
+        }
+    </style>
+</head>
+<body>
+    <h1>求商和求余计算器</h1>
+    <div class="container">
+        <div class="calculator">
+            <h2>取余计算器</h2>
+            <p>示例：10 ÷ 3 = 3</p>
+            <input type="text" id="divisionInput" placeholder="输入被除数">
+            <input type="text" id="dividerInput" placeholder="输入除数">
+            <input type="button" value="计算" onclick="calculateQuotient()">
+            <p id="quotientResult"></p>
+        </div>
+        <div id="flexivse" class="flexivse"></div> <!-- 这里添加了一个新的div元素用于显示FlexivSE -->
+        <div class="calculator">
+            <h2>取模计算器</h2>
+            <p>示例：10 ÷ 3 = 1</p>
+            <input type="text" id="remainderInput" placeholder="输入被除数">
+            <input type="text" id="divisorInput" placeholder="输入除数">
+            <input type="button" value="计算" onclick="calculateRemainder()">
+            <p id="remainderResult"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculateQuotient() {
+            var divisionInput = parseInt(document.getElementById("divisionInput").value);
+            var dividerInput = parseInt(document.getElementById("dividerInput").value);
+            var quotientResult = Math.floor(divisionInput / dividerInput);
+            document.getElementById("quotientResult").innerText = "结果为：" + quotientResult;
+        }
+
+        function calculateRemainder() {
+            var remainderInput = parseInt(document.getElementById("remainderInput").value);
+            var divisorInput = parseInt(document.getElementById("divisorInput").value);
+            var remainderResult = remainderInput % divisorInput;
+            document.getElementById("remainderResult").innerText = "结果为：" + remainderResult;
+        }
+
+        // 新函数用于在指定位置打印 "FlexivSE"
+        function printFlexivSE() {
+            var flexivseDiv = document.getElementById("flexivse");
+            flexivseDiv.innerText = "FlexivSE";
+        }
+
+        // 调用新函数以在指定位置打印 "FlexivSE"
+        printFlexivSE();
+    </script>
+</body>
+</html>
